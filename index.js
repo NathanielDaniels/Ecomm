@@ -1,4 +1,12 @@
-// const nodemon = request("nodemon");
-// const express = request("express");
+// const nodemon = require("nodemon");
+const express = require("express");
 
-console.log("Hello");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Hello");
+});
+
+app.listen(3000, () => {
+  console.log("listening");
+});

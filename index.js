@@ -16,18 +16,26 @@ app.get("/", (req, res) => {
   `);
 });
 
-app.post("/", (req, res) => {
+const bodyParser = (req, res, next) => {
+  if (req.method === "POST") {
+    req.on("data", data => {
+      const parsed = data.toString("utf8").split("&");
+      const formData = {};
+      for (let pair of parsed) {
+        const [key, value] = pair.split("=");
+        formData[key] = value;
+      }
+      console.log(formData);
+      req.body = formData;
+    });
+  } else {
+    next();
+  }
   // get acces to email, password, passwordConfirmation
-  req.on("data", data => {
-    const parsed = data.toString("utf8").split("&");
-    // console.log(parsed);
-    const formData = {};
-    for (let pair of parsed) {
-      const [key, value] = pair.split("=");
-      formData[key] = value;
-    }
-    console.log(formData);
-  });
+};
+
+app.post("/", (req, res) => {
+  // console.log(req);
   res.send("Account Created!");
 });
 

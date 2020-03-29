@@ -20,7 +20,7 @@ class UsersRepository {
       encoding: "utf8"
     });
     // Read its contents
-    console.log(contents);
+    // console.log(contents);
     // Parse Contents
     // Return Parsed Data
   }

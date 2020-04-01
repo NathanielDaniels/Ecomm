@@ -21,6 +21,7 @@ class UsersRepository {
     });
     // Read its contents
     console.log(contents);
+    // ! Continue Here
     // Parse Contents
     // Return Parsed Data
   }
@@ -31,4 +32,4 @@ const test = async () => {
   await repo.GetAll();
 };
 
-test();
+// test();

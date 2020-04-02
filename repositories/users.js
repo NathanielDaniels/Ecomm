@@ -32,4 +32,4 @@ const test = async () => {
   await repo.GetAll();
 };
 
-// test();
+test();

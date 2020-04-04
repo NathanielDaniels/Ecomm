@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-// This helps with Dry Code Practices
+// This helps with Dry Code
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {

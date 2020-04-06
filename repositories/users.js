@@ -26,7 +26,6 @@ class UsersRepository {
   async create(attr) {
     const records = await this.GetAll();
     records.push(attr);
-    // write the updated 'records' array back to this.filename
     await fs.promises.writeFile(this.filename, JSON.stringify(records));
   }
 }

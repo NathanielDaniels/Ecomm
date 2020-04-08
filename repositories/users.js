@@ -16,7 +16,7 @@ class UsersRepository {
     }
   }
 
-  async GetAll() {
+  async getAll() {
     return JSON.parse(
       await fs.promises.readFile(this.filename, {
         encoding: "utf8"
@@ -26,7 +26,7 @@ class UsersRepository {
 
   async create(attr) {
     attr.id = this.randomID();
-    const records = await this.GetAll();
+    const records = await this.getAll();
     records.push(attr);
     await this.writeAll(records);
   }
@@ -41,13 +41,21 @@ class UsersRepository {
   randomID() {
     return crypto.randomBytes(4).toString("hex");
   }
+
+  async getOne(id) {
+    const records = await this.getAll();
+    return records.find(record => record.id === id);
+  }
+
+  async delete
 }
 
 const test = async () => {
   const repo = new UsersRepository("users.json");
-  await repo.create({ email: "test@test.com", password: "password" });
-  const users = await repo.GetAll();
-  console.log(users);
+  const user = await repo.getOne("2342342");
+  // await repo.create({ email: "test@test.com", password: "password" });
+  // const users = await repo.GetAll();
+  console.log(user);
 };
 
 test();

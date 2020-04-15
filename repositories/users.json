@@ -1,12 +1,7 @@
 [
   {
     "email": "Nathan@gmail.com",
-    "password": "abcd",
+    "password": "mypassword",
     "id": "89d2f99f"
-  },
-  {
-    "email": "Nathan@gmail.com",
-    "password": "abcd",
-    "id": "62280ab4"
   }
 ]

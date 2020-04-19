@@ -67,8 +67,8 @@ class UsersRepository {
 const test = async () => {
   const repo = new UsersRepository("users.json");
 
-  await repo.delete("89d2f99f");
-  // await repo.create({ email: "Nathan@gmail.com", password: "abcd" });
+  // await repo.delete("89d2f99f");
+  await repo.create({ email: "Nathan@gmail.com", password: "abcd" });
   // await repo.update("89d2f99f", { password: "mypassword" });
 };
 

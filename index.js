@@ -28,7 +28,7 @@ app.listen(3000, () => {
 });
 
 //? ==========================================================================
-//! BodyParser by hand (trial)
+//! BodyParser by hand (How It Works)
 //* This is now replaced by require('body-parser') + bodyParser.urlencoded({ extended: true })
 
 // const bodyParser = (req, res, next) => {

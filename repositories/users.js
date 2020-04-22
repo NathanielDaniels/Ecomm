@@ -68,8 +68,8 @@ const test = async () => {
   const repo = new UsersRepository("users.json");
 
   // await repo.delete("89d2f99f");
-  await repo.create({ email: "Nathan@gmail.com", password: "password" });
-  // await repo.update("89d2f99f", { password: "mypassword" });
+  // await repo.create({ email: "Nathan@gmail.com", password: "password" });
+  await repo.update("89d2f99f", { password: "mypassword" });
 };
 
 test();

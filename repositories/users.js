@@ -64,7 +64,7 @@ class UsersRepository {
   }
 
   async getOneBy(filters) {
-    const records = await this.getAll()
+    const records = await this.getAll();
 
     for (let record of records) {
       let found = true;
@@ -72,31 +72,24 @@ class UsersRepository {
       for (let key in filters) {
         if (record[key] !== filters[key]) {
           found = false;
-          throw Error (`${key} is not found`)
         }
       }
 
       if (found) {
-        console.log(record)
         return record;
       }
-
-    }
-
-    return records.find(filters) => {
-      // let filter = 
-      fitler.id === id;
-      fitler.password === password
     }
   }
 }
 
 const test = async () => {
   const repo = new UsersRepository("users.json");
-  console.log(await repo.getAll());
+  // console.log(await repo.getAll());
   // await repo.delete("89d2f99f");
   // await repo.create({ email: "Nathan@gmail.com", password: "password" });
-  await repo.update("9812f08e", { password: "NewpPassword" });
+  // await repo.update("9812f08e", { password: "NewpPassword" });
+  const user = await repo.getOneBy({ email: "Nathan@gmail.com" });
+  console.log(user);
 };
 
 test();

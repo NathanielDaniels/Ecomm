@@ -62,6 +62,33 @@ class UsersRepository {
     Object.assign(record, attr);
     await this.writeAll(records);
   }
+
+  async getOneBy(filters) {
+    const records = await this.getAll()
+
+    for (let record of records) {
+      let found = true;
+
+      for (let key in filters) {
+        if (record[key] !== filters[key]) {
+          found = false;
+          throw Error (`${key} is not found`)
+        }
+      }
+
+      if (found) {
+        console.log(record)
+        return record;
+      }
+
+    }
+
+    return records.find(filters) => {
+      // let filter = 
+      fitler.id === id;
+      fitler.password === password
+    }
+  }
 }
 
 const test = async () => {

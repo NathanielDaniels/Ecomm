@@ -83,7 +83,12 @@ class UsersRepository {
   }
 }
 
-module.exports = UsersRepository;
+module.exports = new UsersRepository("users.json");
+
+//? ANOTHER FILE!
+// const repo = require("./users");
+// repo.getAll();
+// repo.getOne();
 
 //==================
 //! Testing above code

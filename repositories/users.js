@@ -72,6 +72,7 @@ class UsersRepository {
       for (let key in filters) {
         if (record[key] !== filters[key]) {
           found = false;
+          throw new Error(`${filters[key]} not found!`);
         }
       }
 
@@ -82,14 +83,18 @@ class UsersRepository {
   }
 }
 
-const test = async () => {
-  const repo = new UsersRepository("users.json");
-  // console.log(await repo.getAll());
-  // await repo.delete("89d2f99f");
-  // await repo.create({ email: "Nathan@gmail.com", password: "password" });
-  // await repo.update("9812f08e", { password: "NewpPassword" });
-  const user = await repo.getOneBy({ email: "Nathan@gmail.com" });
-  console.log(user);
-};
+module.exports = UsersRepository;
 
-test();
+//==================
+//! Testing above code
+// const test = async () => {
+//   const repo = new UsersRepository("users.json");
+//   // console.log(await repo.getAll());
+//   // await repo.delete("89d2f99f");
+//   // await repo.create({ email: "Nathan@gmail.com", password: "password" });
+//   // await repo.update("9812f08e", { password: "NewpPassword" });
+//   const user = await repo.getOneBy({ email: "Nathan@gmail.com" });
+//   console.log(user);
+// };
+
+// test();

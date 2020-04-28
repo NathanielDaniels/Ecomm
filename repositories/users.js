@@ -85,12 +85,25 @@ class UsersRepository {
 
 module.exports = new UsersRepository("users.json");
 
+//===================================
+//* What happens if you just export the whole "UserRepository" class?
+//! modules.exports = UsersRepository;
+
+//* You will need to run the code below in every file that uses UserRepository
+//! Otherwise you can do "new UserRepo("users.json")" to fix that issue
+
 //? ANOTHER FILE!
-// const repo = require("./users");
+// UserRepository = require("./users")
+// const repo = new UsersRepository("users.json")
+
+//! Otherwise, if you use new UsersRepository("users.json")
+//? Another File
+// const repo = require('./users')
 // repo.getAll();
 // repo.getOne();
 
-//==================
+//* In conclusion, you only need ONE UsersRepository class
+//======================================
 //! Testing above code
 // const test = async () => {
 //   const repo = new UsersRepository("users.json");

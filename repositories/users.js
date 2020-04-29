@@ -72,7 +72,7 @@ class UsersRepository {
       for (let key in filters) {
         if (record[key] !== filters[key]) {
           found = false;
-          throw new Error(`${filters[key]} not found!`);
+          // throw new Error(`${filters[key]} not found!`);
         }
       }
 

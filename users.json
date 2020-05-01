@@ -2,5 +2,25 @@
   {
     "email": "test@test.com",
     "password": "asdfsadf"
+  },
+  {
+    "email": "Nate@test.com",
+    "password": "Password",
+    "id": "673d49eb"
+  },
+  {
+    "email": "bob@test.com",
+    "password": "asdfasdf",
+    "id": "112fbb9a"
+  },
+  {
+    "email": "steve@test.com",
+    "password": "asdfasdf",
+    "id": "9ab370dd"
+  },
+  {
+    "email": "simone.paton@gmail.com",
+    "password": "asdfasdf",
+    "id": "ededb8da"
   }
 ]

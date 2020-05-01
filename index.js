@@ -1,10 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieSession = require("cookie-session");
 const usersRepo = require("./repositories/users");
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  cookieSession({
+    keys: ["sdfsdflsjdflskjdf"],
+  })
+);
 
 app.get("/", (req, res) => {
   res.send(`
@@ -33,10 +39,10 @@ app.post("/", async (req, res) => {
   }
 
   // Create a user in our user repo to represent this person
-
   const user = await usersRepo.create({ email, password });
 
   // Store the id of that user inside the users cookie
+  req.session === {}; // added by cookie session
 
   res.send("Account Created!");
 });

@@ -86,7 +86,7 @@ class UsersRepository {
 
 module.exports = new UsersRepository("users.json");
 
-//===================================
+//==========================================================================
 //* What happens if you just export the whole "UserRepository" class?
 //! modules.exports = UsersRepository;
 
@@ -104,15 +104,16 @@ module.exports = new UsersRepository("users.json");
 // repo.getOne();
 
 //* In conclusion, you only need ONE UsersRepository class
-//======================================
-//! Testing above code
+
+//===================================================================
+//! Testing above code to confirm everthing works individually
 // const test = async () => {
 //   const repo = new UsersRepository("users.json");
 //   // console.log(await repo.getAll());
-//   // await repo.delete("89d2f99f");
+//   await repo.delete("c97f830f");
 //   // await repo.create({ email: "Nathan@gmail.com", password: "password" });
 //   // await repo.update("9812f08e", { password: "NewpPassword" });
-//   const user = await repo.getOneBy({ email: "Nathan@gmail.com" });
+//   // const user = await repo.getOneBy({ email: "Nathan@gmail.com" });
 //   console.log(user);
 // };
 

@@ -12,21 +12,22 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
+app.get("/signup", (req, res) => {
   res.send(`
     <div>
       Your ID is: ${req.session.userId} <hr>
-      <form method="POST" >
+      <form method="POST" style="width: 50%; margin: 10px;" >
         <input name="email" placeholder="email"/>
-        <input name="password" placeholder="password"/>
+        <input name="password" placeholder="password" style="margin: 5px 0;"/>
         <input name="passwordConfirmation" placeholder="confirm password"/>
-        <button>Sign Up</button>
+        <br>
+        <button style="margin: 5px 0;">Sign Up</button>
       </form>
     </div>
   `);
 });
 
-app.post("/", async (req, res) => {
+app.post("/signup", async (req, res) => {
   const { email, password, passwordConfirmation } = req.body;
 
   const existingUser = await usersRepo.getOneBy({ email });
@@ -46,6 +47,25 @@ app.post("/", async (req, res) => {
   req.session.userId = user.id; // added by cookie session
 
   res.send("Account Created!");
+});
+
+app.get("/signout", (req, res) => {
+  req.session = null;
+  res.send("You are Logged Out");
+});
+
+app.get("/signin", (req, res) => {
+  res.send(`
+     <div>
+     <h2>Sign In</h2>
+      <form method="POST" style="width: 50%; margin: 10px;" >
+        <input name="email" placeholder="email"/>
+        <input name="password" placeholder="password" style="margin: 5px 0;"/>
+        <br>
+        <button style="margin: 5px 0;">Sign In</button>
+      </form>
+    </div>
+    `);
 });
 
 app.listen(3000, () => {

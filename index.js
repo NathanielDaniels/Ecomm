@@ -68,6 +68,24 @@ app.get("/signin", (req, res) => {
     `);
 });
 
+app.post("/signin", async (req, res) => {
+  const { email, password } = req.body;
+
+  const existingUser = await usersRepo.getOneBy({ email });
+  const existingPassword = await usersRepo.getOneBy({ password });
+
+  if (email === existingUser) {
+    console.log("user correct");
+    return res.send("No Accounts with your email");
+  }
+
+  if (password !== existingPassword) {
+    return res.send("Password Not Correct");
+  }
+
+  res.send("Signed In");
+});
+
 app.listen(3000, () => {
   console.log("listening");
 });

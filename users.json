@@ -2,5 +2,10 @@
   {
     "email": "test@test.com",
     "password": "asdfsadf"
+  },
+  {
+    "email": "nathanieldaniels.dev@gmail.com",
+    "password": "23e914f29bfcc7d34974e98c97a6ecb0924fd41ab543a9a908d8c3074193228a9e5c2ea4a706cc055720e28d158bdf7d69d4f9f887fa49659b41dace2cc0bded.c256dd82bd19dabc",
+    "id": "765e36a9"
   }
 ]

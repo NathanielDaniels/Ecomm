@@ -51,7 +51,7 @@ app.post("/signup", async (req, res) => {
 
 app.get("/signout", (req, res) => {
   req.session = null;
-  res.send("You are Logged Out");
+  res.send("You Logged Out");
 });
 
 app.get("/signin", (req, res) => {
@@ -71,18 +71,19 @@ app.get("/signin", (req, res) => {
 app.post("/signin", async (req, res) => {
   const { email, password } = req.body;
 
-  const existingUser = await usersRepo.getOneBy({ email });
-  const existingPassword = await usersRepo.getOneBy({ password });
+  const user = await usersRepo.getOneBy({ email });
 
-  if (email === existingUser) {
-    console.log("user correct");
-    return res.send("No Accounts with your email");
+  if (!user) {
+    console.log("user NOT correct");
+    return res.send("Email Not Found!");
   }
 
-  if (password !== existingPassword) {
-    return res.send("Password Not Correct");
+  if (user.password !== password) {
+    console.log("no existing password");
+    return res.send("Invalid Password");
   }
 
+  req.session.userId = user.id;
   res.send("Signed In");
 });
 

@@ -74,12 +74,10 @@ app.post("/signin", async (req, res) => {
   const user = await usersRepo.getOneBy({ email });
 
   if (!user) {
-    console.log("user NOT correct");
     return res.send("Email Not Found!");
   }
 
   if (user.password !== password) {
-    console.log("no existing password");
     return res.send("Invalid Password");
   }
 

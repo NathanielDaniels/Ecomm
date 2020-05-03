@@ -5,6 +5,7 @@ module.exports = ({ req }) => {
     content: `
     <div>
       Your ID is: ${req.session.userId} <hr>
+      <h2>Sign Up</h2>
       <form method="POST" style="width: 50%; margin: 10px;" >
         <input name="email" placeholder="email"/>
         <input name="password" placeholder="password" style="margin: 5px 0;"/>

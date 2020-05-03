@@ -1,10 +1,5 @@
 module.exports = () => {
   return `
-  <!DOCTYPE html>
-  <html lang='eng'>
-    <head>
-    </head>
-    <body>
       <div>
       <h2>Sign In</h2>
         <form method="POST" style="width: 50%; margin: 10px;" >
@@ -14,6 +9,5 @@ module.exports = () => {
           <button style="margin: 5px 0;">Sign In</button>
         </form>
       </div>
-    </body>
   `;
 };

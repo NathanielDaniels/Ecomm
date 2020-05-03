@@ -3,6 +3,7 @@ const usersRepo = require("../../repositories/users");
 const router = express.Router();
 const signupTemplate = require("../../views/admin/auth/signup");
 const signinTemplate = require("../../views/admin/auth/signin");
+const { check, validationResult } = require("express-validator");
 
 router.get("/signup", (req, res) => {
   res.send(signupTemplate({ req }));

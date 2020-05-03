@@ -3,6 +3,7 @@ module.exports = ({ content }) => {
     <!DOCTYPE html>
     <html lang='eng'>
     <head>
+      <script></script>
     </head>
     <body>
       ${content}

@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = ({ req }) => {
   return `
     <div>
       Your ID is: ${req.session.userId} <hr>

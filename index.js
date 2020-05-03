@@ -81,6 +81,7 @@ app.post("/signin", async (req, res) => {
     user.password,
     password
   );
+
   if (!validPassword) {
     return res.send("Invalid Password");
   }

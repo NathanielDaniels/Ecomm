@@ -17,6 +17,8 @@ router.post(
     check("passwordConfirmation").trim().isLength({ min: 4, max: 20 }),
   ],
   async (req, res) => {
+    const errors = validationResult(req);
+    console.log(errors);
     const { email, password, passwordConfirmation } = req.body;
 
     const existingUser = await usersRepo.getOneBy({ email });

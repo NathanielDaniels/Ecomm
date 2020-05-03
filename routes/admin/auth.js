@@ -1,4 +1,8 @@
-app.get("/signup", (req, res) => {
+const express = require("express");
+const usersRepo = require("../../repositories/users");
+const router = express.Router();
+
+router.get("/signup", (req, res) => {
   res.send(`
     <div>
       Your ID is: ${req.session.userId} <hr>
@@ -13,7 +17,7 @@ app.get("/signup", (req, res) => {
   `);
 });
 
-app.post("/signup", async (req, res) => {
+router.post("/signup", async (req, res) => {
   const { email, password, passwordConfirmation } = req.body;
 
   const existingUser = await usersRepo.getOneBy({ email });
@@ -35,12 +39,12 @@ app.post("/signup", async (req, res) => {
   res.send("Account Created!");
 });
 
-app.get("/signout", (req, res) => {
+router.get("/signout", (req, res) => {
   req.session = null;
   res.send("You Logged Out");
 });
 
-app.get("/signin", (req, res) => {
+router.get("/signin", (req, res) => {
   res.send(`
      <div>
      <h2>Sign In</h2>
@@ -54,7 +58,7 @@ app.get("/signin", (req, res) => {
     `);
 });
 
-app.post("/signin", async (req, res) => {
+router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
 
   const user = await usersRepo.getOneBy({ email });
@@ -75,3 +79,5 @@ app.post("/signin", async (req, res) => {
   req.session.userId = user.id;
   res.send("Signed In");
 });
+
+module.exports = router;

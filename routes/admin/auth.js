@@ -4,6 +4,11 @@ const router = express.Router();
 const signupTemplate = require("../../views/admin/auth/signup");
 const signinTemplate = require("../../views/admin/auth/signin");
 const { check, validationResult } = require("express-validator");
+const {
+  requireEmail,
+  requirePassword,
+  requirePasswordConfirmation,
+} = require("./validators");
 
 router.get("/signup", (req, res) => {
   res.send(signupTemplate({ req }));
@@ -11,35 +16,15 @@ router.get("/signup", (req, res) => {
 
 router.post(
   "/signup",
-  [
-    check("email")
-      .trim()
-      .normalizeEmail()
-      .isEmail()
-      .custom(async (email) => {
-        const existingUser = await usersRepo.getOneBy({ email });
-
-        if (existingUser) {
-          throw new Error("Email Already in Use");
-        }
-      }),
-    check("password").trim().isLength({ min: 4, max: 20 }),
-    check("passwordConfirmation")
-      .trim()
-      .isLength({ min: 4, max: 20 })
-      .withMessage("Must be between 4 and 20 characters")
-      .custom(async (passwordConfirmation, { req }) => {
-        if (req.body.password !== passwordConfirmation) {
-          throw new Error("Passwords Must Match");
-        }
-      }),
-  ],
+  [requireEmail, requirePassword, requirePasswordConfirmation],
   async (req, res) => {
     const errors = validationResult(req);
-    console.log(errors);
-    const { email, password, passwordConfirmation } = req.body;
 
-    // Create a user in our user repo to represent this person
+    if (!errors.isEmpty()) {
+      return res.send(signupTemplate({ req, errors }));
+    }
+
+    const { email, password, passwordConfirmation } = req.body;
     const user = await usersRepo.create({ email, password });
 
     // Store the id of that user inside the users cookie

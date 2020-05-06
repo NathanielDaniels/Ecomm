@@ -57,7 +57,24 @@ router.post(
           throw new Error("Email Not Found!");
         }
       }),
-    check("password").trim(),
+    check("password")
+      .trim()
+      .custom(async (password, { req }) => {
+        const user = await usersRepo.getOneBy({ email: req.body.email });
+
+        if (!user) {
+          throw new Error("User Not Found");
+        }
+
+        const validPassword = await usersRepo.comparePasswords(
+          user.password,
+          password
+        );
+
+        if (!validPassword) {
+          throw new Error("Invalid Password");
+        }
+      }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -68,15 +85,6 @@ router.post(
 
     if (!user) {
       return res.send("Email Not Found!");
-    }
-
-    const validPassword = await usersRepo.comparePasswords(
-      user.password,
-      password
-    );
-
-    if (!validPassword) {
-      return res.send("Invalid Password");
     }
 
     req.session.userId = user.id;

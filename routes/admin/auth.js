@@ -50,10 +50,18 @@ router.post(
       .trim()
       .normalizeEmail()
       .isEmail()
-      .withMessage("Must Provide Valid Email"),
+      .withMessage("Must Provide Valid Email")
+      .custom(async (email) => {
+        const user = await usersRepo.getOneBy({ email });
+        if (!user) {
+          throw new Error("Email Not Found!");
+        }
+      }),
     check("password").trim(),
   ],
   async (req, res) => {
+    const errors = validationResult(req);
+    console.log(errors);
     const { email, password } = req.body;
 
     const user = await usersRepo.getOneBy({ email });

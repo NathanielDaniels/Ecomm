@@ -43,26 +43,37 @@ router.get("/signin", (req, res) => {
   res.send(signinTemplate());
 });
 
-router.post("/signin", async (req, res) => {
-  const { email, password } = req.body;
+router.post(
+  "/signin",
+  [
+    check("email")
+      .trim()
+      .normalizeEmail()
+      .isEmail()
+      .withMessage("Must Provide Valid Email"),
+    check("password").trim(),
+  ],
+  async (req, res) => {
+    const { email, password } = req.body;
 
-  const user = await usersRepo.getOneBy({ email });
+    const user = await usersRepo.getOneBy({ email });
 
-  if (!user) {
-    return res.send("Email Not Found!");
+    if (!user) {
+      return res.send("Email Not Found!");
+    }
+
+    const validPassword = await usersRepo.comparePasswords(
+      user.password,
+      password
+    );
+
+    if (!validPassword) {
+      return res.send("Invalid Password");
+    }
+
+    req.session.userId = user.id;
+    res.send("Signed In");
   }
-
-  const validPassword = await usersRepo.comparePasswords(
-    user.password,
-    password
-  );
-
-  if (!validPassword) {
-    return res.send("Invalid Password");
-  }
-
-  req.session.userId = user.id;
-  res.send("Signed In");
-});
+);
 
 module.exports = router;

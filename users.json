@@ -12,5 +12,10 @@
     "email": "test@gmail.com",
     "password": "dc6dc2066f7a903936ea1b205414e7d173a90fd2df47328c0fc1fcc90a37acea03d79028a30cec686b8365e2934c58f0c1931463802fcd853d57ea76139df135.25d8b38b1c9ba868",
     "id": "1c479bf8"
+  },
+  {
+    "email": "bob@test.com",
+    "password": "d75f7e80b6c3b9f6ada53a72c849d69ec9ad930f88ad7d974738b34879bde76bd782c96500b9f5b12464b353d1464d6d7415b1bae742154ff7b5868226bf06d5.fe984ae13b858b59",
+    "id": "1de7bfec"
   }
 ]

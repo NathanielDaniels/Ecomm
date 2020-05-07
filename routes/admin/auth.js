@@ -63,7 +63,7 @@ router.post(
         const user = await usersRepo.getOneBy({ email: req.body.email });
 
         if (!user) {
-          throw new Error("User Not Found");
+          throw new Error("Invalid Password");
         }
 
         const validPassword = await usersRepo.comparePasswords(
@@ -79,13 +79,9 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     console.log(errors);
-    const { email, password } = req.body;
+    const { email } = req.body;
 
     const user = await usersRepo.getOneBy({ email });
-
-    if (!user) {
-      return res.send("Email Not Found!");
-    }
 
     req.session.userId = user.id;
     res.send("Signed In");

@@ -1,21 +1,7 @@
 [
   {
     "email": "test@test.com",
-    "password": "asdfsadf"
-  },
-  {
-    "email": "nathanieldaniels.dev@gmail.com",
-    "password": "23e914f29bfcc7d34974e98c97a6ecb0924fd41ab543a9a908d8c3074193228a9e5c2ea4a706cc055720e28d158bdf7d69d4f9f887fa49659b41dace2cc0bded.c256dd82bd19dabc",
-    "id": "765e36a9"
-  },
-  {
-    "email": "test@gmail.com",
-    "password": "dc6dc2066f7a903936ea1b205414e7d173a90fd2df47328c0fc1fcc90a37acea03d79028a30cec686b8365e2934c58f0c1931463802fcd853d57ea76139df135.25d8b38b1c9ba868",
-    "id": "1c479bf8"
-  },
-  {
-    "email": "bob@test.com",
-    "password": "d75f7e80b6c3b9f6ada53a72c849d69ec9ad930f88ad7d974738b34879bde76bd782c96500b9f5b12464b353d1464d6d7415b1bae742154ff7b5868226bf06d5.fe984ae13b858b59",
-    "id": "1de7bfec"
+    "password": "0bb806d9ab8199b6e8916005e30b4bf8a26827065cbdd4361d5f2c7c49f8621a4b8440f5a969e579ed159b23313d7b9c149c7011af024c690cc209b016cd65f9.1fbadeb459e37379",
+    "id": "d0ee9001"
   }
 ]

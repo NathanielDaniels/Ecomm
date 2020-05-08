@@ -1,14 +1,6 @@
 const layout = require("../layout");
+const { getError } = require("../../helpers");
 // const validators = require("../../../routes/admin/validators");
-
-const getError = (errors, prop) => {
-  // prop === 'email' || 'password' || 'passwordConfirmation
-  try {
-    return errors.mapped()[prop].msg;
-  } catch (err) {
-    return "";
-  }
-};
 
 module.exports = ({ req, errors }) => {
   return layout({

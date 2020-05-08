@@ -52,7 +52,7 @@ router.post(
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.send(signinTemplate());
+      return res.send(signinTemplate({ errors }));
     }
     const { email } = req.body;
 

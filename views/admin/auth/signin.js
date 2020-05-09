@@ -4,17 +4,27 @@ const { getError } = require("../../helpers");
 module.exports = ({ errors }) => {
   return layout({
     content: `
-    <div>
-      <h2>Sign In</h2>
-      <form method="POST" style="width: 50%; margin: 10px;" >
-        <input name="email" placeholder="email"/> <br>
-        ${getError(errors, "email")}
-        <input name="password" placeholder="password" style="margin: 5px 0;"/><br>
-        ${getError(errors, "password")}
-        <br>
-        <button style="margin: 5px 0;">Sign In</button>
-      </form>
-    </div>
-  `,
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-one-quarter">
+            <form method="POST">
+              <h1 class="title">Sign in</h1>
+              <div class="field">
+                <label class="label">Email</label>
+                <input required class="input" placeholder="Email" name="email" />
+                <p class="help is-danger">${getError(errors, "email")}</p>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <input required class="input" placeholder="Password" name="password" type="password" />
+                <p class="help is-danger">${getError(errors, "password")}</p>
+              </div>
+              <button class="button is-primary">Submit</button>
+            </form>
+            <a href="/signup">Need an account? Sign Up</a>
+          </div>
+        </div>
+      </div>
+    `,
   });
 };
